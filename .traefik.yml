@@ -1,12 +1,20 @@
-displayName: Demo Plugin
+# The name of your plugin as displayed in the Plugins Catalog web UI.
+displayName: Rate Limit
+
+# For now, `middleware` is the only type available.
 type: middleware
-iconPath: .assets/icon.png
 
-import: github.com/traefik/plugindemo
+# The import path of your plugin.
+import: github.com/kav789/traefik-ratelimit
 
-summary: '[Demo] Add Request Header'
+# A brief description of what your plugin is doing.
+summary: Rate Limit
 
+# Medias associated to the plugin (optional)
+iconPath:  .assets/icon.png
+
+# Configuration data for your plugin.
+# This is mandatory,
+# and Plugins Catalog will try to execute the plugin with the data you provide as part of its startup validity tests.
 testData:
-  Headers:
-    X-Demo: test
-    X-URL: '{{URL}}'
+  rate: 100

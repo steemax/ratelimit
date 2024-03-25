@@ -1,3 +1,3 @@
-module github.com/traefik/plugindemo
+module github.com/kav789/traefik-ratelimit
 
-go 1.19
+go 1.18
