@@ -45,10 +45,13 @@ func (r *RateLimit) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	}
 	rw.Header().Set("Content-Type", "application/json")
 	rw.WriteHeader(http.StatusTooManyRequests)
-	encoder.Encode(map[string]any{"status_code": http.StatusTooManyRequests, "message": "rate limit exceeded, try again later"})
+	if err := encoder.Encode(map[string]interface{}{"status_code": http.StatusTooManyRequests, "message": "rate limit exceeded, try again later"}); err != nil {
+		mlog("Ошибка кодирования данных:", err)
+		return
+	}
 	return
 }
 
-func mlog(args ...any) {
+func mlog(args ...interface{}) {
 	os.Stdout.WriteString(fmt.Sprintf("[rate-limit-middleware-plugin] %s\n", fmt.Sprint(args...)))
 }
