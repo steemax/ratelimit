@@ -1,3 +1,3 @@
-module github.com/kav789/traefik-ratelimit
+module github.com/steemax/ratelimit
 
 go 1.18
